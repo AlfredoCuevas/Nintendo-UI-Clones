@@ -464,6 +464,15 @@ MonoBehaviour:
   - name: Alfredo Land
     xAngle: 30
     yAngle: 0
+  - name: B Land
+    xAngle: 80
+    yAngle: -50
+  - name: C Land
+    xAngle: 30
+    yAngle: 50
+  - name: D Land
+    xAngle: -60
+    yAngle: 0
   _sphere: {fileID: 62689523}
   _kingdomPivotPrefab: {fileID: 1702263696696714254, guid: 1e92a91061bf2f246b9049c557650413,
     type: 3}
