@@ -11,7 +11,7 @@ public class KingdomSelect : MonoBehaviour
     private List<Kingdom> _kingdoms = new List<Kingdom>();
 
     [SerializeField]
-    private Transform _sphere;
+    private Transform _sphereModel;
 
     [SerializeField]
     private Transform _kingdomPivotPrefab;
@@ -22,7 +22,7 @@ public class KingdomSelect : MonoBehaviour
     [SerializeField]
     private Transform _kingdomButtonPrefab;
 
-    private int index = 0;
+    private int index = 1;
 
     //-------------------------------------
 
@@ -32,10 +32,12 @@ public class KingdomSelect : MonoBehaviour
         {
             SpawnKingdomPoint(kingdom);
         }
+        LookAtKingdom(_kingdoms[0]);
     }
 
     private void Update()
     {
+        // For testing the camera tween
         if (Input.GetKeyDown(KeyCode.F))
         {
             LookAtKingdom(_kingdoms[index]);
@@ -50,13 +52,12 @@ public class KingdomSelect : MonoBehaviour
         Transform mainCamera = Camera.main.transform;
         Transform cameraPivot = mainCamera.parent.parent;
 
-        //cameraPivot.localEulerAngles = new Vector3(kingdom.xAngle, kingdom.yAngle, 0);
         cameraPivot.DOLocalRotate(new Vector3(kingdom.xAngle, kingdom.yAngle, 0), 1, RotateMode.Fast);
     }
 
     private void SpawnKingdomPoint(Kingdom kingdom)
     {
-        Transform tempKingdom = Instantiate(_kingdomPivotPrefab, _sphere);
+        Transform tempKingdom = Instantiate(_kingdomPivotPrefab, _sphereModel);
         tempKingdom.localEulerAngles = new Vector3(kingdom.xAngle, kingdom.yAngle, 0);
         tempKingdom.name = kingdom.name;
 
