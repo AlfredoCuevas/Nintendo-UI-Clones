@@ -14,6 +14,8 @@ public class KingdomSelect : MonoBehaviour
     [SerializeField]
     private Transform _kingdomPivotPrefab;
 
+    //-------------------------------------
+
     private void Start()
     {
         foreach (Kingdom kingdom in _kingdoms)
@@ -22,12 +24,23 @@ public class KingdomSelect : MonoBehaviour
         }
     }
 
-    private void SpawnKingdomPoint(Kingdom kingdom)
+    // Rotates camera pivot based on a kingdoms pivot rotation
+    public void LookAtKingdom(Kingdom kingdom)
     {
-        Transform myKingdom = Instantiate(_kingdomPivotPrefab, _sphere);
+        Transform mainCamera = Camera.main.transform;
+        Transform cameraPivot = mainCamera.parent.parent;
+
+        cameraPivot.localEulerAngles = new Vector3(kingdom.xAngle, kingdom.yAngle, 0);
     }
 
-    [System.Serializable]
+    private void SpawnKingdomPoint(Kingdom kingdom)
+    {
+        Transform tempKingdom = Instantiate(_kingdomPivotPrefab, _sphere);
+        tempKingdom.localEulerAngles = new Vector3(kingdom.xAngle, kingdom.yAngle, 0);
+        tempKingdom.name = kingdom.name;
+    }
+
+    [Serializable]
     public class Kingdom
     {
         public string name;
