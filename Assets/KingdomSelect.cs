@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class KingdomSelect : MonoBehaviour
 
     [SerializeField]
     private Transform _kingdomPivotPrefab;
+    private int index = 0;
 
     //-------------------------------------
 
@@ -24,13 +26,24 @@ public class KingdomSelect : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            LookAtKingdom(_kingdoms[index]);
+            index++;
+            index %= _kingdoms.Count;
+        }
+    }
+
     // Rotates camera pivot based on a kingdoms pivot rotation
     public void LookAtKingdom(Kingdom kingdom)
     {
         Transform mainCamera = Camera.main.transform;
         Transform cameraPivot = mainCamera.parent.parent;
 
-        cameraPivot.localEulerAngles = new Vector3(kingdom.xAngle, kingdom.yAngle, 0);
+        //cameraPivot.localEulerAngles = new Vector3(kingdom.xAngle, kingdom.yAngle, 0);
+        cameraPivot.DOLocalRotate(new Vector3(kingdom.xAngle, kingdom.yAngle, 0), 1, RotateMode.Fast);
     }
 
     private void SpawnKingdomPoint(Kingdom kingdom)
