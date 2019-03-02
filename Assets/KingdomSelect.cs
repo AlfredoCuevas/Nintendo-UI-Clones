@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KingdomSelect : MonoBehaviour
 {
@@ -14,6 +15,13 @@ public class KingdomSelect : MonoBehaviour
 
     [SerializeField]
     private Transform _kingdomPivotPrefab;
+
+    [SerializeField]
+    private Transform _uiContainer;
+
+    [SerializeField]
+    private Transform _kingdomButtonPrefab;
+
     private int index = 0;
 
     //-------------------------------------
@@ -51,6 +59,16 @@ public class KingdomSelect : MonoBehaviour
         Transform tempKingdom = Instantiate(_kingdomPivotPrefab, _sphere);
         tempKingdom.localEulerAngles = new Vector3(kingdom.xAngle, kingdom.yAngle, 0);
         tempKingdom.name = kingdom.name;
+
+        SpawnKingdomButton(kingdom);
+    }
+
+    private void SpawnKingdomButton(Kingdom kingdom)
+    {
+        Button kingdomButton = Instantiate(_kingdomButtonPrefab, _uiContainer).GetComponent<Button>();
+        kingdomButton.name = kingdom.name + " Button";
+        kingdomButton.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = kingdom.name;
+        kingdomButton.onClick.AddListener(() => LookAtKingdom(kingdom));
     }
 
     [Serializable]
