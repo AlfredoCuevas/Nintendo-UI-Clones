@@ -444,13 +444,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.27079317, y: -0.24199922, z: -0.07053635, w: 0.9290491}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 999841263}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -32.5, y: -29.2, z: 0}
 --- !u!1 &999841262
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,7 +475,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999841262}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3}
+  m_LocalPosition: {x: 0.1, y: -0.3, z: -0.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 534669905}
@@ -751,7 +751,7 @@ MonoBehaviour:
   - name: D Land
     xAngle: -60
     yAngle: 0
-  _sphere: {fileID: 62689523}
+  _sphereModel: {fileID: 0}
   _kingdomPivotPrefab: {fileID: 1702263696696714254, guid: 1e92a91061bf2f246b9049c557650413,
     type: 3}
   _uiContainer: {fileID: 1799135751}
