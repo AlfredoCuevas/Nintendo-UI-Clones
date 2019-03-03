@@ -22,7 +22,7 @@ public class KingdomSelect : MonoBehaviour
     [SerializeField]
     private Transform _kingdomButtonPrefab;
 
-    private int index = 1;
+    private Button _firstButton;
 
     //-------------------------------------
 
@@ -32,21 +32,12 @@ public class KingdomSelect : MonoBehaviour
         {
             SpawnKingdomPoint(kingdom);
         }
+        
+        // Select the first kindom
         LookAtKingdom(_kingdoms[0]);
+        _firstButton.GetComponent<KingdomButton>().ManuallySelect();
     }
 
-    private void Update()
-    {
-        // For testing the camera tween
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            LookAtKingdom(_kingdoms[index]);
-            index++;
-            index %= _kingdoms.Count;
-        }
-    }
-
-    // Rotates camera pivot based on a kingdoms pivot rotation
     public void LookAtKingdom(Kingdom kingdom)
     {
         Transform mainCamera = Camera.main.transform;
@@ -70,6 +61,8 @@ public class KingdomSelect : MonoBehaviour
         kingdomButton.name = kingdom.name + " Button";
         kingdomButton.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = kingdom.name;
         kingdomButton.onClick.AddListener(() => LookAtKingdom(kingdom));
+
+        if (!_firstButton) _firstButton = kingdomButton;
     }
 
     [Serializable]
