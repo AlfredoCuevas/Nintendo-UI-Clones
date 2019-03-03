@@ -206,7 +206,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: de51d163819bc3140b6300feb08cbf1f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -419,7 +419,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 53
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -475,7 +475,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999841262}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: -0.3, z: -0.95}
+  m_LocalPosition: {x: 0.1, y: -0.3, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 534669905}
@@ -518,7 +518,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 150}
+  m_AnchoredPosition: {x: 0, y: 80}
   m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1799135752
@@ -740,18 +740,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _kingdoms:
   - name: Alfredo Land
-    xAngle: 30
-    yAngle: 0
+    xAngle: 39
+    yAngle: 27
   - name: B Land
-    xAngle: 80
-    yAngle: -50
+    xAngle: 45
+    yAngle: -85
   - name: C Land
-    xAngle: 30
-    yAngle: 50
+    xAngle: 40
+    yAngle: 130
   - name: D Land
-    xAngle: -60
-    yAngle: 0
-  _sphereModel: {fileID: 0}
+    xAngle: -25
+    yAngle: -210
+  _sphereModel: {fileID: 62689523}
   _kingdomPivotPrefab: {fileID: 1702263696696714254, guid: 1e92a91061bf2f246b9049c557650413,
     type: 3}
   _uiContainer: {fileID: 1799135751}
