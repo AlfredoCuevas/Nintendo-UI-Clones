@@ -39,7 +39,9 @@ public class LineCreator : MonoBehaviour
         Vector3 midpoint = new Vector3((startPoint.x + endPoint.x) * 0.5f,
                                        (startPoint.y + endPoint.y) * 0.5f,
                                        (startPoint.z + endPoint.z) * 0.5f);
-        midpoint *= 1.4f;
+        //midpoint *= 1.4f;
+        midpoint = Vector3.Normalize(midpoint);
+        midpoint *= .7f;
 
         return midpoint;
     }
