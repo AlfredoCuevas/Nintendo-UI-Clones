@@ -20,6 +20,9 @@ public class KingdomSelect : MonoBehaviour
     private Transform _uiContainer;
 
     [SerializeField]
+    private Image _locationImage;
+
+    [SerializeField]
     private Transform _kingdomButtonPrefab;
 
     [SerializeField]
@@ -48,6 +51,8 @@ public class KingdomSelect : MonoBehaviour
         Transform cameraPivot = mainCamera.parent.parent;
 
         cameraPivot.DOLocalRotate(new Vector3(kingdom.xAngle, kingdom.yAngle, 0), 1, RotateMode.Fast);
+
+        _locationImage.sprite = kingdom.locationPicture;
     }
 
     private void SpawnKingdomPoint(Kingdom kingdom)
@@ -86,5 +91,6 @@ public class KingdomSelect : MonoBehaviour
     {
         public string name;
         public float xAngle, yAngle;
+        public Sprite locationPicture;
     }
 }
