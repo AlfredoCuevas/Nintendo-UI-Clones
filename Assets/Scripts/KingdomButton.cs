@@ -38,6 +38,8 @@ public class KingdomButton : MonoBehaviour
         _text.DOColor(Color.black, .5f);
         _circle.DOColor(Color.red, .5f);
 
+        AudioManager.Instance.PlayOneShot("Button Selected");
+
         _rectangle.transform.DOComplete();
         _rectangle.transform.DOPunchScale(Vector3.one * .3f, .2f, 20, 1);
     }
@@ -54,6 +56,7 @@ public class KingdomButton : MonoBehaviour
         if(EventSystem.current.currentSelectedGameObject != gameObject)
         {
             _rectangle.DOColor(_rectHoverColor, .5f);
+            AudioManager.Instance.PlayOneShot("Button Hover");
         }
     }
 
