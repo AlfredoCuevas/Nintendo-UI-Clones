@@ -350,7 +350,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 53
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -5181,7 +5181,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.3
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -10254,21 +10254,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _kingdoms:
-  - name: Alfredo Land
-    xAngle: 39
-    yAngle: 27
-  - name: B Land
-    xAngle: 45
-    yAngle: -85
-  - name: C Land
+  - name: Los Angeles, US
     xAngle: 40
-    yAngle: 130
-  - name: D Land
-    xAngle: -25
-    yAngle: -210
+    yAngle: 30
+  - name: New York, US
+    xAngle: 45
+    yAngle: -15
+  - name: Madrid, Spain
+    xAngle: 45
+    yAngle: -87
+  - name: Moscow, Russia
+    xAngle: 66
+    yAngle: -130
+  - name: Mumbai, India
+    xAngle: 19
+    yAngle: 196
+  - name: Hong Kong, China
+    xAngle: 23
+    yAngle: 155
+  - name: Tokyo, Japan
+    xAngle: 38
+    yAngle: 133
   _sphereModel: {fileID: 62689523}
   _kingdomPivotPrefab: {fileID: 1702263696696714254, guid: 1e92a91061bf2f246b9049c557650413,
     type: 3}
   _uiContainer: {fileID: 1799135751}
   _kingdomButtonPrefab: {fileID: 3792165034306137774, guid: cba4daaef4e610a4b86464b37f0cfe07,
+    type: 3}
+  _bezierCurvePrefab: {fileID: 771618855919261400, guid: 94857c70f16f90e4bae6ac31260e7481,
     type: 3}

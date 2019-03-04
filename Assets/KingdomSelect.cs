@@ -22,7 +22,11 @@ public class KingdomSelect : MonoBehaviour
     [SerializeField]
     private Transform _kingdomButtonPrefab;
 
+    [SerializeField]
+    private Transform _bezierCurvePrefab;
+
     private Button _firstButton;
+    private Transform _previousKingdom;
 
     //-------------------------------------
 
@@ -53,6 +57,12 @@ public class KingdomSelect : MonoBehaviour
         tempKingdom.name = kingdom.name;
 
         SpawnKingdomButton(kingdom);
+
+        if (_previousKingdom)
+        {
+            CreateConnectingLine(_previousKingdom.GetComponentInChildren<MeshRenderer>().transform, tempKingdom.GetComponentInChildren<MeshRenderer>().transform);
+        }
+        _previousKingdom = tempKingdom;
     }
 
     private void SpawnKingdomButton(Kingdom kingdom)
@@ -63,6 +73,12 @@ public class KingdomSelect : MonoBehaviour
         kingdomButton.onClick.AddListener(() => LookAtKingdom(kingdom));
 
         if (!_firstButton) _firstButton = kingdomButton;
+    }
+
+    private void CreateConnectingLine(Transform prevKingdom, Transform currentKingdom)
+    {
+        var line = Instantiate(_bezierCurvePrefab, _sphereModel).GetComponent<LineCreator>();
+        line.SetUpLine(prevKingdom, currentKingdom);
     }
 
     [Serializable]
