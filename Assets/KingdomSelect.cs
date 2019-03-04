@@ -52,7 +52,12 @@ public class KingdomSelect : MonoBehaviour
 
         cameraPivot.DOLocalRotate(new Vector3(kingdom.xAngle, kingdom.yAngle, 0), 1, RotateMode.Fast);
 
-        _locationImage.sprite = kingdom.locationPicture;
+        // Change the Image
+        if(_locationImage.sprite != kingdom.locationPicture)
+        {
+            _locationImage.sprite = kingdom.locationPicture;
+            _locationImage.rectTransform.DOPunchScale(Vector3.one * .05f, .2f, 15, 1);
+        }
     }
 
     private void SpawnKingdomPoint(Kingdom kingdom)
