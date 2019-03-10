@@ -12,6 +12,9 @@ public class CharacterGrid : MonoBehaviour
     [SerializeField]
     private GameObject _cellPrefab;
 
+    [SerializeField]
+    private Transform _playerSlot;
+
     private void Start()
     {
         foreach (var character in _characters)
@@ -20,10 +23,27 @@ public class CharacterGrid : MonoBehaviour
         }
     }
 
+    public void ShowCharacterInSlot(int player, Character character)
+    {
+        // Store character info
+        Sprite artworkSprite =  character ? character.characterSprite : null;
+        string charName =       character ? character.characterName : string.Empty;
+        string playerNickname = character ? "Player " + player.ToString() : string.Empty;
+        string playerNumber =   character ? "P" + player.ToString() : string.Empty;
+
+        // Assign character info into the player slot
+        PlayerSlotComponents slot = _playerSlot.GetComponent<PlayerSlotComponents>();
+        slot.characterImage.sprite = artworkSprite;
+        slot.characterName.text = charName;
+        slot.playerNickname.text = playerNickname;
+        slot.playerNumber.text = playerNumber;
+    }
+
     private void CreateCharacterCell(Character character)
     {
         CharacterCellComponents cell = Instantiate(_cellPrefab, transform).GetComponent<CharacterCellComponents>();
         cell.gameObject.name = character.characterName;
+        cell.myCharacter = character;
 
         TextMeshProUGUI name = cell.characterName;
         Image artwork = cell.artwork;

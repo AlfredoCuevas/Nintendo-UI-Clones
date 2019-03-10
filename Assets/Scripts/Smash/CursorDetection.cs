@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class CursorDetection : MonoBehaviour
 {
+    [SerializeField]
+    private CharacterGrid _characterGrid;
+
     private GraphicRaycaster _graphicRaycaster;
     private PointerEventData _pointerEventData = new PointerEventData(null);
 
@@ -14,6 +17,7 @@ public class CursorDetection : MonoBehaviour
     void Start()
     {
         _graphicRaycaster = GetComponentInParent<GraphicRaycaster>();
+        SetCurrentCharacter(null);
     }
 
     void Update()
@@ -26,16 +30,30 @@ public class CursorDetection : MonoBehaviour
         {
             for(int i = 0; i < results.Count; i++)
             {
-                if (results[i].gameObject.tag == "Character Cell")
+                if (results[i].gameObject.tag == "Character Cell" && results[i].gameObject.transform != currentCharacter)
                 {
-                    currentCharacter = results[i].gameObject.transform;
+                    SetCurrentCharacter(results[i].gameObject.transform);
                     break;
                 }
-                else
-                {
-                    currentCharacter = null;
-                }
             }
+        }
+        else if( currentCharacter != null)
+        {
+            SetCurrentCharacter(null);
+        }
+    }
+
+    private void SetCurrentCharacter(Transform characterCell)
+    {
+        currentCharacter = characterCell;
+
+        if (characterCell)
+        {
+            _characterGrid.ShowCharacterInSlot(1, currentCharacter.GetComponent<CharacterCellComponents>().myCharacter);
+        }
+        else
+        {
+            _characterGrid.ShowCharacterInSlot(1, null);
         }
     }
 }
