@@ -23,6 +23,7 @@ public class CharacterGrid : MonoBehaviour
     private void CreateCharacterCell(Character character)
     {
         CharacterCellComponents cell = Instantiate(_cellPrefab, transform).GetComponent<CharacterCellComponents>();
+        cell.gameObject.name = character.characterName;
 
         TextMeshProUGUI name = cell.characterName;
         Image artwork = cell.artwork;
