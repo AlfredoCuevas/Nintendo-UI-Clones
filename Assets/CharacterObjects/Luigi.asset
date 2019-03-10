@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: LUIGI
   characterSprite: {fileID: 21300000, guid: ddbfc1a062db9aa468042389455ec8f5, type: 3}
+  characterGameIcon: {fileID: 21300000, guid: f669d3641500da2459d9b27ee300a05c, type: 3}
   zoom: 1.2

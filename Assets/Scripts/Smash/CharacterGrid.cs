@@ -28,6 +28,7 @@ public class CharacterGrid : MonoBehaviour
     {
         // Get character info
         Sprite artworkSprite =  character ? character.characterSprite : null;
+        Sprite gameIconSprite = character ? character.characterGameIcon : null;
         string charName =       character ? character.characterName : string.Empty;
         string playerNickname = character ? "Player " + player.ToString() : string.Empty;
         string playerNumber =   character ? "P" + player.ToString() : string.Empty;
@@ -35,6 +36,7 @@ public class CharacterGrid : MonoBehaviour
         // Assign character info into the player slot
         PlayerSlotComponents slot = _playerSlot.GetComponent<PlayerSlotComponents>();
         slot.characterImage.sprite = artworkSprite;
+        slot.characterIcon.sprite = gameIconSprite;
         slot.characterName.text = charName;
         slot.playerNickname.text = playerNickname;
         slot.playerNumber.text = playerNumber;

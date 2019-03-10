@@ -84,11 +84,31 @@ public class CursorDetection : MonoBehaviour
         UpdateTokenPosition();
     }
 
-    private void SetCurrentCharacter(Transform characterCell)
+    private void SetCurrentCharacter(Transform nextCharacterCell)
     {
-        _currentCharacter = characterCell;
+        // Turn on and off Border Animations for the character grid cells
+        if (nextCharacterCell == null && _currentCharacter != null)
+        {
+            _currentCharacter.GetComponent<CharacterCellComponents>().border.DOKill();
+            _currentCharacter.GetComponent<CharacterCellComponents>().border.color = Color.clear;
+        }
+        else if (nextCharacterCell != null && _currentCharacter != null)
+        {
+            _currentCharacter.GetComponent<CharacterCellComponents>().border.DOKill();
+            _currentCharacter.GetComponent<CharacterCellComponents>().border.color = Color.clear;
 
-        if (characterCell)
+            nextCharacterCell.GetComponent<CharacterCellComponents>().border.color = Color.white;
+            nextCharacterCell.GetComponent<CharacterCellComponents>().border.DOColor(Color.red, 1).SetLoops(-1);
+        }
+        else if(nextCharacterCell != null && _currentCharacter == null)
+        {
+            nextCharacterCell.GetComponent<CharacterCellComponents>().border.color = Color.white;
+            nextCharacterCell.GetComponent<CharacterCellComponents>().border.DOColor(Color.red, 1).SetLoops(-1);
+        }
+
+        _currentCharacter = nextCharacterCell;
+
+        if (nextCharacterCell)
         {
             _characterGrid.ShowCharacterInSlot(1, _currentCharacter.GetComponent<CharacterCellComponents>().myCharacter);
         }

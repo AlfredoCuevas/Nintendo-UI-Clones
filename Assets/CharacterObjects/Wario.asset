@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: WARIO
   characterSprite: {fileID: 21300000, guid: c2d56fe0c5abdd64ca193187b7d5756b, type: 3}
+  characterGameIcon: {fileID: 21300000, guid: 5b93211d34dd11044a746ad06629b141, type: 3}
   zoom: 1.2

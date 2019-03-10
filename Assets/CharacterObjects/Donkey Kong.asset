@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: DONKEY KONG
   characterSprite: {fileID: 21300000, guid: 3f89cf5681af7df47a3adf63aa91ddcb, type: 3}
+  characterGameIcon: {fileID: 21300000, guid: 698d537552c29a743a5046c1e3981fa8, type: 3}
   zoom: 1.5

@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: ROSALINA
   characterSprite: {fileID: 21300000, guid: da0b198b27b730844a30a9934e773638, type: 3}
+  characterGameIcon: {fileID: 21300000, guid: f669d3641500da2459d9b27ee300a05c, type: 3}
   zoom: 1.5

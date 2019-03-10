@@ -13,5 +13,8 @@ public class CharacterCellComponents : MonoBehaviour
     public TextMeshProUGUI characterName;
 
     [SerializeField]
+    public Image border;
+
+    [SerializeField]
     public Character myCharacter;
 }
