@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bab5981857d1a0043abd053f2e62dbf8, type: 3}
   m_Name: Mario
   m_EditorClassIdentifier: 
-  characterName: Mario
+  characterName: MARIO
   characterSprite: {fileID: 21300000, guid: 62b847b4d06094b4c80969cd6b4db32c, type: 3}
+  zoom: 1

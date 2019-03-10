@@ -8,4 +8,5 @@ public class Character : ScriptableObject
 {
     public string characterName;
     public Sprite characterSprite;
+    public float zoom = 1;
 }

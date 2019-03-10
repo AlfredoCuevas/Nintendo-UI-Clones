@@ -478,7 +478,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characters:
   - {fileID: 11400000, guid: 85e3ed676c3280947861f71dc3525258, type: 2}
+  - {fileID: 11400000, guid: d0645ac95269bd440ab50889cd14215e, type: 2}
+  - {fileID: 11400000, guid: ec8c05f2b190ccd44acf99fb0dc8af5d, type: 2}
+  - {fileID: 11400000, guid: 55a7847db3e6e46448d9c29bcca6aa84, type: 2}
+  - {fileID: 11400000, guid: 72779ad256a665e40b38d82697dac9e3, type: 2}
+  - {fileID: 11400000, guid: 401050592f43983479e86230bda5936a, type: 2}
+  - {fileID: 11400000, guid: 18653195835332349a3500082e378a87, type: 2}
+  - {fileID: 11400000, guid: 375f20820eb00094f808b2ce0b118ee8, type: 2}
+  - {fileID: 11400000, guid: 40afc6af4d635114ea264981ad4ab454, type: 2}
+  - {fileID: 11400000, guid: 9e919587f87a49c48bf1fc970deb712c, type: 2}
   - {fileID: 11400000, guid: f0d6b49ba9c6fe04da6e9fd2a711d80d, type: 2}
+  - {fileID: 11400000, guid: 8c36f16a2bd314c49bd4f172094693ee, type: 2}
+  - {fileID: 11400000, guid: d73b6c73c13cb3149a59867c45bb7dd7, type: 2}
   _cellPrefab: {fileID: 8954226144325340427, guid: 7fc88f1149455e14fb3bad0e340ec774,
     type: 3}
 --- !u!1 &1960736639

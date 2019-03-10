@@ -24,7 +24,17 @@ public class CharacterGrid : MonoBehaviour
     {
         CharacterCellComponents cell = Instantiate(_cellPrefab, transform).GetComponent<CharacterCellComponents>();
 
-        cell.characterName.text = character.characterName; 
-        cell.artwork.sprite = character.characterSprite;
+        TextMeshProUGUI name = cell.characterName;
+        Image artwork = cell.artwork;
+
+        name.text = character.characterName; 
+        artwork.sprite = character.characterSprite;
+
+        Vector2 pixelSize = new Vector2(artwork.sprite.texture.width, artwork.sprite.texture.height);
+        Vector2 pixelPivot = artwork.sprite.pivot;
+        Vector2 uiPivot = new Vector2(pixelPivot.x / pixelSize.x, pixelPivot.y / pixelSize.y);
+
+        artwork.GetComponent<RectTransform>().pivot = uiPivot;
+        artwork.GetComponent<RectTransform>().sizeDelta *= character.zoom;
     }
 }
