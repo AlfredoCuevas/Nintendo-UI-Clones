@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class CharacterGrid : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class CharacterGrid : MonoBehaviour
 
     public void ShowCharacterInSlot(int player, Character character)
     {
-        // Store character info
+        // Get character info
         Sprite artworkSprite =  character ? character.characterSprite : null;
         string charName =       character ? character.characterName : string.Empty;
         string playerNickname = character ? "Player " + player.ToString() : string.Empty;
@@ -37,6 +38,11 @@ public class CharacterGrid : MonoBehaviour
         slot.characterName.text = charName;
         slot.playerNickname.text = playerNickname;
         slot.playerNumber.text = playerNumber;
+    }
+
+    public void CharacterConfirm()
+    {
+        _playerSlot.DOPunchPosition(Vector3.down * 5, 0.5f, 4, 0);
     }
 
     private void CreateCharacterCell(Character character)
