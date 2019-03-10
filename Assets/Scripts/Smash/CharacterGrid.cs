@@ -16,6 +16,9 @@ public class CharacterGrid : MonoBehaviour
     [SerializeField]
     private Transform _playerSlot;
 
+    [SerializeField]
+    private Sprite _transparentSquare;
+
     private void Start()
     {
         foreach (var character in _characters)
@@ -27,19 +30,26 @@ public class CharacterGrid : MonoBehaviour
     public void ShowCharacterInSlot(int player, Character character)
     {
         // Get character info
-        Sprite artworkSprite =  character ? character.characterSprite : null;
-        Sprite gameIconSprite = character ? character.characterGameIcon : null;
+        Sprite artworkSprite =  character ? character.characterSprite : _transparentSquare;
+        Sprite gameIconSprite = character ? character.characterGameIcon : _transparentSquare;
         string charName =       character ? character.characterName : string.Empty;
-        string playerNickname = character ? "Player " + player.ToString() : string.Empty;
-        string playerNumber =   character ? "P" + player.ToString() : string.Empty;
+        string playerNickname = character ? "Player " + player.ToString() : "Player " + player.ToString();
+        string playerNumber =   character ? "P" + player.ToString() : "P" + player.ToString();
 
         // Assign character info into the player slot
         PlayerSlotComponents slot = _playerSlot.GetComponent<PlayerSlotComponents>();
-        slot.characterImage.sprite = artworkSprite;
+        
         slot.characterIcon.sprite = gameIconSprite;
         slot.characterName.text = charName;
         slot.playerNickname.text = playerNickname;
         slot.playerNumber.text = playerNumber;
+
+        Sequence s = DOTween.Sequence();
+        float centerX = -235f;
+        s.Append(slot.characterImage.transform.DOLocalMoveX(centerX-300, .1f));
+        s.AppendCallback(() => slot.characterImage.sprite = artworkSprite);
+        s.Append(slot.characterImage.transform.DOLocalMoveX(centerX+300, 0));
+        s.Append(slot.characterImage.transform.DOLocalMoveX(centerX, 0.2f));
     }
 
     public void CharacterConfirm()
