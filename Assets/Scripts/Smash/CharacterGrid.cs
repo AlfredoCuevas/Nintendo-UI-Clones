@@ -24,6 +24,7 @@ public class CharacterGrid : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.Instance.Play("Smash Background Music");
         foreach (var character in _characters)
         {
             CreateCharacterCell(character);
