@@ -17,6 +17,9 @@ public class CharacterGrid : MonoBehaviour
     private Transform _playerSlot;
 
     [SerializeField]
+    private Transform _player2Slot;
+
+    [SerializeField]
     private Sprite _transparentSquare;
 
     private void Start()
@@ -25,6 +28,9 @@ public class CharacterGrid : MonoBehaviour
         {
             CreateCharacterCell(character);
         }
+
+        int RandomIndex = Random.Range(0, _characters.Count);
+        RandomPlayer2Character(_characters[RandomIndex]);
     }
 
     public void ShowCharacterInSlot(int player, Character character)
@@ -75,5 +81,19 @@ public class CharacterGrid : MonoBehaviour
 
         artwork.GetComponent<RectTransform>().pivot = uiPivot;
         artwork.GetComponent<RectTransform>().sizeDelta *= character.zoom;
+    }
+
+    private void RandomPlayer2Character(Character character)
+    {
+        // Get character info
+        Sprite artworkSprite = character ? character.characterSprite : _transparentSquare;
+        Sprite gameIconSprite = character ? character.characterGameIcon : _transparentSquare;
+        string charName = character ? character.characterName : string.Empty;
+
+        // Assign character info into the player slot
+        PlayerSlotComponents slot = _player2Slot.GetComponent<PlayerSlotComponents>();
+        slot.characterImage.sprite = artworkSprite;
+        slot.characterIcon.sprite = gameIconSprite;
+        slot.characterName.text = charName;
     }
 }
