@@ -69,12 +69,18 @@ public class CursorDetection : MonoBehaviour
             {
                 _hasToken = false;
                 _token.DOPunchScale( Vector3.one * 0.2f, .2f, 0, 0);
+                AudioManager.Instance.PlayOneShot("Character Selected");
                 _characterGrid.CharacterConfirm();
             }
             else if (!_hasToken)
             {
                 // _hasToken = true after the tween
                 Tweener tween =_token.DOMove(transform.position - _positionOffset, 0.05f).OnComplete(()=>_hasToken = true);
+                AudioManager.Instance.PlayOneShot("Token Return");
+            }
+            else
+            {
+                AudioManager.Instance.PlayOneShot("Can Not Select");
             }
         }
     }
@@ -111,6 +117,7 @@ public class CursorDetection : MonoBehaviour
         if (nextCharacterCell)
         {
             _characterGrid.ShowCharacterInSlot(1, _currentCharacter.GetComponent<CharacterCellComponents>().myCharacter);
+            AudioManager.Instance.PlayOneShot("Cell Hovered");
         }
         else
         {
