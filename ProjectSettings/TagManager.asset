@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Character Cell
+  - Back Button
   layers:
   - Default
   - TransparentFX

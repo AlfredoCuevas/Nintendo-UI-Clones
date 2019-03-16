@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
 
 public class CursorDetection : MonoBehaviour
@@ -12,6 +13,9 @@ public class CursorDetection : MonoBehaviour
 
     [SerializeField]
     private Transform _token;
+
+    [SerializeField]
+    private Image _backButton;
 
     [SerializeField]
     private Vector3 _positionOffset;
@@ -61,6 +65,33 @@ public class CursorDetection : MonoBehaviour
                 SetCurrentCharacter(null);
             }
         }
+
+        // Currently working here trying to get back button color to function as expected
+        // try debugging when all colors are applied. 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            StartCoroutine(LeaveScene());
+            return;
+        }
+        else
+        {
+            // check if back button is being hovered
+            for (int i = 0; i < results.Count; i++)
+            {
+                if (results[i].gameObject.tag == "Back Button")
+                {
+                    _backButton.color = Color.red;
+                    if (Input.GetKeyDown(KeyCode.F))
+                    {
+                        Debug.Log("F Pressed Once");
+                        StartCoroutine(LeaveScene());
+                        return;
+                    }
+                    break;
+                }
+                _backButton.color = Color.white;
+            }
+        } 
 
         // Read User Input for putting down the token
         if (Input.GetKeyDown(KeyCode.F))
@@ -131,5 +162,28 @@ public class CursorDetection : MonoBehaviour
         {
             _token.transform.position = transform.position - _positionOffset;
         }
+    }
+
+    private IEnumerator LeaveScene()
+    {
+        _backButton.DOComplete();
+        _backButton.color = Color.red;
+        _backButton.DOColor(Color.gray, 1f);
+        
+        float timer = 0f;
+        while (Input.GetKey(KeyCode.F) || Input.GetKey(KeyCode.Escape))
+        {
+            timer += Time.deltaTime;
+            if(timer > 1f)
+            {
+                AudioManager.Instance.FadeOutSound("Smash Background Music", 0.5f);
+                _backButton.transform.DOPunchScale(Vector3.one, 0.01f, 0, 0);
+                SceneManager.LoadScene(0);
+                break;
+            }
+            yield return null;
+        }
+        _backButton.DOComplete();
+        _backButton.color = Color.white;
     }
 }
