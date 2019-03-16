@@ -27,7 +27,7 @@ public class CursorDetection : MonoBehaviour
 
     [SerializeField]
     private bool _hasToken;
-    
+    private bool _hoveringBackButton = false;
 
     void Start()
     {
@@ -43,6 +43,7 @@ public class CursorDetection : MonoBehaviour
         List<RaycastResult> results = new List<RaycastResult>();
         _graphicRaycaster.Raycast(_pointerEventData, results);
 
+        // Select the current character cell
         if (_hasToken)
         {
             if (results.Count > 0)
@@ -66,37 +67,37 @@ public class CursorDetection : MonoBehaviour
             }
         }
 
-        // Currently working here trying to get back button color to function as expected
-        // try debugging when all colors are applied. 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        // Implementing cursor hovering on the back button
+        for( int i = 0; i < results.Count; i++)
         {
-            StartCoroutine(LeaveScene());
-            return;
-        }
-        else
-        {
-            // check if back button is being hovered
-            for (int i = 0; i < results.Count; i++)
+            if (results[i].gameObject.tag == "Back Button")
             {
-                if (results[i].gameObject.tag == "Back Button")
+                if (!_hoveringBackButton)
                 {
-                    _backButton.color = Color.red;
-                    if (Input.GetKeyDown(KeyCode.F))
-                    {
-                        Debug.Log("F Pressed Once");
-                        StartCoroutine(LeaveScene());
-                        return;
-                    }
-                    break;
+                    _hoveringBackButton = true;
+                    AudioManager.Instance.PlayOneShot("Cell Hovered");
+                    _backButton.transform.DOPunchScale(Vector3.one * .1f, .1f, 0, 0);
                 }
+                break;
+            }
+            else if( i == results.Count - 1)
+            {
+                _hoveringBackButton = false;
+                _backButton.DOComplete();
                 _backButton.color = Color.white;
             }
-        } 
+        }
 
         // Read User Input for putting down the token
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if(_currentCharacter != null && _hasToken)
+            if (_hoveringBackButton)
+            {
+                AudioManager.Instance.PlayOneShot("Character Selected");
+                _backButton.DOColor(Color.red, 0.1f).OnComplete(() => LeaveScene());
+                return;
+            }
+            else if(_currentCharacter != null && _hasToken)
             {
                 _hasToken = false;
                 _token.DOPunchScale( Vector3.one * 0.2f, .2f, 0, 0);
@@ -164,26 +165,9 @@ public class CursorDetection : MonoBehaviour
         }
     }
 
-    private IEnumerator LeaveScene()
+    private void LeaveScene()
     {
-        _backButton.DOComplete();
-        _backButton.color = Color.red;
-        _backButton.DOColor(Color.gray, 1f);
-        
-        float timer = 0f;
-        while (Input.GetKey(KeyCode.F) || Input.GetKey(KeyCode.Escape))
-        {
-            timer += Time.deltaTime;
-            if(timer > 1f)
-            {
-                AudioManager.Instance.FadeOutSound("Smash Background Music", 0.5f);
-                _backButton.transform.DOPunchScale(Vector3.one, 0.01f, 0, 0);
-                SceneManager.LoadScene(0);
-                break;
-            }
-            yield return null;
-        }
-        _backButton.DOComplete();
-        _backButton.color = Color.white;
+        AudioManager.Instance.FadeOutSound("Smash Background Music", .5f);
+        SceneManager.LoadScene(0);
     }
 }
