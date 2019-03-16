@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2665,6 +2665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterGrid: {fileID: 1094045783}
   _token: {fileID: 1854156237}
+  _backButton: {fileID: 1885687555}
   _positionOffset: {x: 0, y: -0.1, z: 0}
   _hasToken: 0
 --- !u!114 &1407963047
