@@ -35,7 +35,6 @@ public class KingdomSelect : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.Instance.Play("Globe Background Music");
         foreach (Kingdom kingdom in _kingdoms)
         {
             SpawnKingdomPoint(kingdom);
