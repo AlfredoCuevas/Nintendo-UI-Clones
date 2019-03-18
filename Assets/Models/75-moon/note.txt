@@ -1,0 +1,13 @@
+MAPS
+
+"Moon.Diffuse_21600x10800" is in fact 14MP 17K  (19/443Mb) 
+downsampled from the original 23MP image (58.3/667Mb)
+
+Maps:
+NASA / Lunar Reconnaisance Orbiter Camera 
+: http://wms.lroc.asu.edu/lroc/view_rdr/WAC_GLD100
+GitHub / jaanga
+: http://jaanga.github.io/moon/heightmaps/
+
+
+
