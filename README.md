@@ -4,6 +4,7 @@
 * Earth Model/Texture created by Robert Mirabelle
 * Skybox obtained from AVIONX on Unity Asset Store
 * DOTween obtained from DEMIGIANT on Unity Asset Store
+* Moon model created by <a href="https://free3d.com/3d-model/detailed-moon-216493.html">ideastudio</a>
 
 Smash Menu:
 I do not own any of the Smash Ultimate Images or Icons.
