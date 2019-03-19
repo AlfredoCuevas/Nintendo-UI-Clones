@@ -12,6 +12,7 @@ public class NextScene : MonoBehaviour
 
     public void GoToNextScene()
     {
+        AudioManager.Instance.PlayOneShot("Button Selected");
         AudioManager.Instance.FadeOutSound("Globe Background Music", 0.5f);
         SceneManager.LoadScene(1);
     }

@@ -10558,6 +10558,7 @@ GameObject:
   - component: {fileID: 1575653810}
   - component: {fileID: 1575653809}
   - component: {fileID: 1575653808}
+  - component: {fileID: 1575653811}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -10625,7 +10626,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2008326993}
+      - m_Target: {fileID: 1575653811}
         m_MethodName: GoToNextScene
         m_Mode: 1
         m_Arguments:
@@ -10675,6 +10676,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1575653806}
   m_CullTransparentMesh: 0
+--- !u!114 &1575653811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575653806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e38ea13a7f19344896ffc1a9c196b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1799135750
 GameObject:
   m_ObjectHideFlags: 0
@@ -10988,7 +11001,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2008326991}
   - component: {fileID: 2008326992}
-  - component: {fileID: 2008326993}
   m_Layer: 0
   m_Name: World
   m_TagString: Untagged
@@ -11067,18 +11079,6 @@ MonoBehaviour:
     type: 3}
   _bezierCurvePrefab: {fileID: 771618855919261400, guid: 94857c70f16f90e4bae6ac31260e7481,
     type: 3}
---- !u!114 &2008326993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2008326990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84e38ea13a7f19344896ffc1a9c196b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3267987346142253500
 PrefabInstance:
   m_ObjectHideFlags: 0
