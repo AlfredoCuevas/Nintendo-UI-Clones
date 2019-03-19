@@ -23,6 +23,11 @@ public class KingdomSelect : MonoBehaviour
     private Image _locationImage;
 
     [SerializeField]
+    private GameObject _ringIndicator1;
+    [SerializeField]
+    private GameObject _ringIndicator2;
+
+    [SerializeField]
     private Transform _kingdomButtonPrefab;
 
     [SerializeField]
@@ -49,8 +54,9 @@ public class KingdomSelect : MonoBehaviour
     {
         Transform mainCamera = Camera.main.transform;
         Transform cameraPivot = mainCamera.parent.parent;
+        RingIndicatorOn(false);
 
-        cameraPivot.DOLocalRotate(new Vector3(kingdom.xAngle, kingdom.yAngle, 0), 1, RotateMode.Fast);
+        cameraPivot.DOLocalRotate(new Vector3(kingdom.xAngle, kingdom.yAngle, 0), 1, RotateMode.Fast).OnComplete(() => RingIndicatorOn(true));
 
         // Change the Image
         if(_locationImage.sprite != kingdom.locationPicture)
@@ -89,6 +95,13 @@ public class KingdomSelect : MonoBehaviour
     {
         var line = Instantiate(_bezierCurvePrefab, _sphereModel).GetComponent<LineCreator>();
         line.SetUpLine(prevKingdom, currentKingdom);
+    }
+
+    private void RingIndicatorOn(bool b)
+    {
+        // Turn me back on
+        _ringIndicator1.GetComponent<Image>().enabled = b;
+        _ringIndicator2.GetComponent<Image>().enabled = b;
     }
 
     [Serializable]
