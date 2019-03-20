@@ -102,6 +102,7 @@ public class CursorDetection : MonoBehaviour
                 _hasToken = false;
                 _token.DOPunchScale( Vector3.one * 0.2f, .2f, 0, 0);
                 AudioManager.Instance.PlayOneShot("Character Selected");
+                AudioManager.Instance.PlayOneShot(_currentCharacter.gameObject.name);
                 _characterGrid.CharacterConfirm();
             }
             else if (!_hasToken)
