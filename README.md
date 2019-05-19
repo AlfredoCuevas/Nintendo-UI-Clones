@@ -1,4 +1,5 @@
-# CMPM121-FinalProject
+# Nintendo UI Clones 
+### CMPM121-FinalProject
 Project Inspired by the <a href="https://www.youtube.com/channel/UCLyVUwlB_Hahir_VsKkGPIA">Mix and Jam Youtube Channel</a>
 
 * Earth Model/Texture created by Robert Mirabelle
